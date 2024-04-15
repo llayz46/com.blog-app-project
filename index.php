@@ -1,7 +1,11 @@
 <?php
+  require_once 'lib/config.php';
+  require_once 'lib/pdo.php';
   require_once 'lib/article.php';
   require_once 'lib/menu.php';
   require_once 'templates/header.php';
+
+  $articles = getArticles($pdo, HOME_LIMIT_ARTICLES);
 ?>
 
 <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
