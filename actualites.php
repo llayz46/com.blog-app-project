@@ -6,7 +6,7 @@
 <h1>Actualités</h1>
 
 <div class="row text-center">
-  <?php foreach($articles as $article) {
+  <?php foreach($articles as $key => $article) {
     require 'templates/article_part.php';
   } ?>
 </div>
