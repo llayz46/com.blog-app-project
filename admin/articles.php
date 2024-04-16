@@ -13,7 +13,7 @@ if (isset($_GET['page'])) {
 $articles = getArticles($pdo, ADMIN_ITEMS_PER_PAGE, $page);
 ?>
 
-<h1>Liste des articles</h1>
+<h1 class="mt-3">Liste des articles</h1>
 
 <table class="table">
   <thead>

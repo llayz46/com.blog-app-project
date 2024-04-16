@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../lib/config.php';
 require_once __DIR__ . '/../../lib/session.php';
+require_once __DIR__ . '/../../lib/menu.php';
+$currentPage = basename($_SERVER['SCRIPT_FILENAME']);
 
 adminOnly();
 ?>
@@ -11,7 +13,7 @@ adminOnly();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tzt'etzzet</title>
+  <title><?=$adminMenu[$currentPage]['head_title']?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/override-bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -19,28 +21,22 @@ adminOnly();
 
 <body>
 
-  <div class="d-flex">
+  <div class="d-flex min-vh-100">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi bi-bootstrap pe-none me-2" width="40" height="32">
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-4">Sidebar</span>
+      <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto ps-3 text-white text-decoration-none">
+        <i class="bi bi-menu-button pe-none me-2"></i>
+        <span class="fs-4">Menu</span>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
+        <?php foreach($adminMenu as $key => $menuItem) { ?>
         <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">
+          <a href="<?=$key?>" class="nav-link text-white <?php if ($currentPage === $key) { echo 'active'; } ?>" aria-current="page">
             <i class="bi-house-door bi pe-none me-2"></i>
-            Accueil
+            <?=$menuItem['menu_title']?>
           </a>
         </li>
-        <li>
-          <a href="articles.php" class="nav-link text-white">
-            <i class="bi-table bi pe-none me-2"></i>
-            Articles
-          </a>
-        </li>
+        <?php } ?>
       </ul>
       <hr>
       <div class="dropdown">
