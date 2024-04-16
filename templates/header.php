@@ -31,15 +31,19 @@
         <?php foreach($mainMenu as $key => $menuItem) { 
           if(!array_key_exists('exclude', $menuItem)) { ?>
             <li class="nav-item"><a href="<?=$key?>" class="nav-link px-2 <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$menuItem['menu_title']?></a></li>
-          <?php } ?>
+            <?php } ?>
         <?php } ?>
       </ul>
 
       <div class="col-md-3 text-end">
+        <?php if ($_SESSION && $_SESSION['user']['role'] === 'admin') { ?>
+          <a href="admin/index.php" class="btn btn-outline-primary me-2">Dashboard admin</a>
+        <?php } ?>
         <?php if(isset($_SESSION['user'])) { ?>
           <a href="logout.php" class="btn btn-primary">Déconnexion</a>
         <?php } else { ?>
           <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
+          <a href="inscription.php" class="btn btn-outline-primary me-2">S'inscrire</a>
         <?php } ?>
       </div>
     </header>

@@ -15,7 +15,7 @@ adminOnly();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=$adminMenu[$currentPage]['head_title']?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/override-bootstrap.css">
+  <link rel="stylesheet" href="../../assets/css/override-bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -32,7 +32,7 @@ adminOnly();
         <?php foreach($adminMenu as $key => $menuItem) { ?>
         <li class="nav-item">
           <a href="<?=$key?>" class="nav-link text-white <?php if ($currentPage === $key) { echo 'active'; } ?>" aria-current="page">
-            <i class="bi-house-door bi pe-none me-2"></i>
+            <i class="<?=$menuItem['icon']?> bi pe-none me-2"></i>
             <?=$menuItem['menu_title']?>
           </a>
         </li>
@@ -45,12 +45,6 @@ adminOnly();
           <strong><?=$_SESSION['user']['first_name']?></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
           <li><a class="dropdown-item" href="../../logout.php">Déconnexion</a></li>
         </ul>
       </div>
