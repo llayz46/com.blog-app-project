@@ -11,6 +11,10 @@ if (isset($_GET['page'])) {
 }
 
 $articles = getArticles($pdo, ADMIN_ITEMS_PER_PAGE, $page);
+
+$totalArticles = getTotalArticles($pdo);
+
+$totalPages = ceil($totalArticles / ADMIN_ITEMS_PER_PAGE);
 ?>
 
 <h1 class="mt-3">Liste des articles</h1>
@@ -34,6 +38,15 @@ $articles = getArticles($pdo, ADMIN_ITEMS_PER_PAGE, $page);
   </tbody>
 </table>
 
-<?php 
+<?php if($totalPages > 1) { ?>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+      <li class="page-item"><a class="page-link <?php if (isset($_GET['page'])) { if ($i === (int)$page) { echo 'active'; } } else {if ($i === 1) { echo 'active'; } } ?>" href="?page=<?=$i?>"><?=$i?></a></li>
+    <?php } ?>
+  </ul>
+</nav>
+
+<?php }
 require_once 'templates/footer.php';
 ?>
