@@ -1,5 +1,6 @@
 <?php 
 
+define('DOMAIN', '.blog.local');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'blog_llayz_php');
 define('DB_USER', 'layz');

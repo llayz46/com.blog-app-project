@@ -1,5 +1,6 @@
 <?php
   require_once 'lib/config.php';
+  require_once 'lib/session.php';
   require_once 'lib/pdo.php';
   require_once 'lib/article.php';
   require_once 'lib/menu.php';
