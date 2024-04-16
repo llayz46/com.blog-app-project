@@ -8,3 +8,11 @@ session_set_cookie_params([
 ]);
 
 session_start();
+
+function adminOnly() {
+  if (!isset($_SESSION['user'])) {
+    header('Location: ../login.php');
+  } elseif ($_SESSION['user']['role'] !== 'admin') {
+    header('Location: ../index.php');
+  }
+}

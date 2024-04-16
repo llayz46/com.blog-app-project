@@ -10,3 +10,4 @@ define('PATH_ASSETS_IMAGES', '/assets/images/');
 define('PATH_UPLOADS_ARTICLES', '/uploads/articles/');
 
 define('HOME_LIMIT_ARTICLES', 3);
+define('ADMIN_ITEMS_PER_PAGE', 20);

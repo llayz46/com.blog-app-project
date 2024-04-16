@@ -1,4 +1,5 @@
 <?php
+  require_once 'lib/session.php';
   require_once 'lib/menu.php';
   $currentPage = basename($_SERVER['SCRIPT_FILENAME']);
 ?>
@@ -35,8 +36,11 @@
       </ul>
 
       <div class="col-md-3 text-end">
-        <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <?php if(isset($_SESSION['user'])) { ?>
+          <a href="logout.php" class="btn btn-primary">Déconnexion</a>
+        <?php } else { ?>
+          <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
+        <?php } ?>
       </div>
     </header>
 

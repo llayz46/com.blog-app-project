@@ -1,15 +1,23 @@
 <?php
-function getArticles(PDO $pdo, INT $limit = null): array {
+function getArticles(PDO $pdo, INT $limit = null, INT $page = null): array {
   $sql = 'SELECT * FROM articles ORDER BY id DESC';
 
-  if ($limit) {
+  if ($limit && !$page) {
     $sql .= " LIMIT :limit";
+  }
+  if ($page) {
+    $sql .= " LIMIT :offset, :limit";
   }
 
   $query = $pdo->prepare($sql);
 
   if ($limit) {
     $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+  }
+
+  if ($page) {
+    $offset = ($page - 1) * $limit;
+    $query->bindValue(':offset', $offset, PDO::PARAM_INT);
   }
 
   $query->execute();

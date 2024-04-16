@@ -1,6 +1,5 @@
 <?php
   require_once 'lib/config.php';
-  require_once 'lib/session.php';
   require_once 'lib/menu.php';
   require_once 'lib/pdo.php';
   require_once 'lib/user.php';
@@ -24,7 +23,7 @@
         header('Location: admin/index.php');
       }
     } else {
-      echo '<div class="alert alert-danger" role="alert">Email ou mot de passe incorrect</div>';
+      $errors = 'Email ou mot de passe incorrect';
     }
   }
 
